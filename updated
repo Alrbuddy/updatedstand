@@ -779,10 +779,9 @@ game.Players[StandOwner].Chatted:Connect(function(msg)
 		evolvefollow = false
 		game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 
-		while true do
-			wait()
+		repeat wait()
 			if game.Players[StandOwner].Character.BodyEffects["K.O"].Value == true then
-		  
+
 				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players")[StandOwner].Character.UpperTorso.Position) * CFrame.new(0,1,0)
 				wait(.4)
 				game.ReplicatedStorage.MainEvent:FireServer("Grabbing")
@@ -790,17 +789,18 @@ game.Players[StandOwner].Chatted:Connect(function(msg)
 				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-484.67132568359, 41.499858856201, -100.71377563477)
 				wait(1.5)
 				game.ReplicatedStorage.MainEvent:FireServer("Grabbing")
-		  
+
 			end
-		  
+
 			if game.Players[StandOwner].Character.BodyEffects["K.O"].Value == false then
-		  
+
 				noclip = true
 				follow = true
-		  
+
 			end
-		  end		  
-end
+		until game.Players[StandOwner].Character.BodyEffects["K.O"].Value == false
+
+	end
 end)
 
 game.Players[StandOwner].Chatted:Connect(function(msg)
